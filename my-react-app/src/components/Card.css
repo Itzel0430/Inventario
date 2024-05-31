@@ -1,0 +1,24 @@
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  
+  .card {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 23%; /* Adjusted to fit 4 cards in a row with some spacing */
+    text-align: center;
+  }
+  
+  .card h2 {
+    margin: 0 0 1rem;
+  }
+  
+  .card p {
+    margin: 0;
+  }
+  
