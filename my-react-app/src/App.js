@@ -1,25 +1,21 @@
 import React from 'react';
 import './App.css';
-import Card from './components/Card';
-import Footer from './components/Footer';
+import CarInventory from './components/CarInventory';
 import Menu from './components/Menu';
-import Carousel from './components/Slider';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Menu />
-     
-      <div className="content">
-        <h1>Welcome to My React App</h1>
-        <p>This is a simple React app with a menu and a dynamic slider.</p>
+      <div className="main-content">
+        {}
       </div>
-      <Carousel/>
-      <br></br>
-      <Card />
-      <Footer />
+      
+     <CarInventory />
+      
+      
     </div>
   );
-}
+};
 
 export default App;

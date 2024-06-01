@@ -1,31 +1,75 @@
 .menu-container {
-    width: 100%;
-    background-color: #333;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-  }
-  
-  .logo {
-    width: 50px;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .nav-links li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .nav-links li a:hover {
-    text-decoration: underline;
-  }
-  
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+  margin-right: 20px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px; /* Espacio entre los botones */
+}
+
+.nav-links li {
+  position: relative;
+  margin: 0;
+}
+
+.nav-links .btn {
+  display: inline-block;
+  padding: 20px 40px; /* Tamaño del botón */
+  background-color: #007BFF; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 18px; /* Tamaño de la fuente */
+  font-weight: bold; /* Peso de la fuente */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.nav-links .btn:hover {
+  background-color: #73777b; /* Color de fondo al pasar el cursor */
+}
+
+/* Estilos para el dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Alinea el submenú debajo del botón */
+  left: 0;
+  background-color: white;
+  padding: 10px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f1f1f1;
+}
+
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
