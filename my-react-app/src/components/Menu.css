@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.navbar {
+.lol {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,28 +20,28 @@
   margin-right: 20px;
 }
 
-.nav-links {
+.lol-links {
   list-style: none;
   padding: 0;
   display: flex;
-  gap: 10px; 
+  gap: 10px; /* Espacio entre los botones */
 }
 
-.nav-links .btn {
+.lol-links .btn {
   display: inline-block;
-  padding: 20px 40px; 
-  background-color: #0a0a0a; 
-  color: white; 
+  padding: 20px 40px; /* Tamaño del botón */
+  background-color: #0a0a0a; /* Fondo rojo */
+  color: white; /* Color del texto del botón */
   text-align: center;
   text-decoration: none;
-  border-radius: 5px; 
-  font-size: 18px; 
-  font-weight: bold; 
-  transition: background-color 0.3s, opacity 0.3s; 
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 18px; /* Tamaño de la fuente */
+  font-weight: bold; /* Peso de la fuente */
+  transition: background-color 0.3s, opacity 0.3s; /* Transición suave para el color de fondo y la opacidad */
 }
 
-.nav-links .btn:hover {
-  background-color: rgba(255, 0, 0, 0.8); 
+.lol-links .btn:hover {
+  background-color: rgba(255, 0, 0, 0.8); /* Fondo rojo más opaco al pasar el cursor */
 }
 
 /* Estilos para el dropdown menu */
@@ -72,6 +72,6 @@
   background-color: #f1f1f1;
 }
 
-.nav-item:hover .dropdown-menu {
+.lol-item:hover .dropdown-menu {
   display: block;
 }

@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
 import './SignUpForm.css';
 
-const SignUpForm = ({ onSignUp, onBackToHome }) => {
+const SignUpForm = ({ onSignUp }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí podrías agregar la lógica para registrar al usuario, por ejemplo, con una API
-    // En este ejemplo, simplemente pasamos los datos de registro al prop onSignUp
+    // Lógica para registrar al usuario
     onSignUp({ name, email, password });
+    // Limpiar campos del formulario
     setName('');
     setEmail('');
     setPassword('');
-  };
-
-  const handleBackToHome = () => {
-    // Lógica para regresar al home
-    onBackToHome();
+    alert("Registro Exitoso"); // Mensaje de confirmación de registro exitoso
   };
 
   return (

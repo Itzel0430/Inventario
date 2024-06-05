@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './LogInForm.css';
 
-const LoginForm = ({ onLogin, onBackToHome }) => {
+const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,11 +12,6 @@ const LoginForm = ({ onLogin, onBackToHome }) => {
     onLogin({ email, password });
     setEmail('');
     setPassword('');
-  };
-
-  const handleBackToHome = () => {
-    // Lógica para regresar al home
-    onBackToHome();
   };
 
   return (
