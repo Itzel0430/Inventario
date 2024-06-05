@@ -1,5 +1,12 @@
 .menu-container {
   text-align: center;
+  background-image: url('../coche.avif'); 
+  background-size: cover; 
+  background-position: center; 
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar {
@@ -17,29 +24,24 @@
   list-style: none;
   padding: 0;
   display: flex;
-  gap: 10px; /* Espacio entre los botones */
-}
-
-.nav-links li {
-  position: relative;
-  margin: 0;
+  gap: 10px; 
 }
 
 .nav-links .btn {
   display: inline-block;
-  padding: 20px 40px; /* Tamaño del botón */
-  background-color: #007BFF; /* Color de fondo del botón */
-  color: white; /* Color del texto del botón */
+  padding: 20px 40px; 
+  background-color: #0a0a0a; 
+  color: white; 
   text-align: center;
   text-decoration: none;
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 18px; /* Tamaño de la fuente */
-  font-weight: bold; /* Peso de la fuente */
-  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+  border-radius: 5px; 
+  font-size: 18px; 
+  font-weight: bold; 
+  transition: background-color 0.3s, opacity 0.3s; 
 }
 
 .nav-links .btn:hover {
-  background-color: #73777b; /* Color de fondo al pasar el cursor */
+  background-color: rgba(255, 0, 0, 0.8); 
 }
 
 /* Estilos para el dropdown menu */

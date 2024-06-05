@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './LogInForm.css';
 
 const LoginForm = ({ onLogin, onBackToHome }) => {
   const [email, setEmail] = useState('');
@@ -46,7 +47,6 @@ const LoginForm = ({ onLogin, onBackToHome }) => {
         </div>
         <div className="button-group">
           <button type="submit" className="btn">Sign In</button>
-          <button type="button" className="btn" onClick={handleBackToHome}>Back to Home</button>
         </div>
       </form>
     </div>

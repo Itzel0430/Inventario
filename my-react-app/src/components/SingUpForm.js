@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SignUpForm.css';
 
 const SignUpForm = ({ onSignUp, onBackToHome }) => {
   const [name, setName] = useState('');
@@ -22,44 +23,46 @@ const SignUpForm = ({ onSignUp, onBackToHome }) => {
 
   return (
     <div className="signup-form">
-      <h2>Sign Up</h2>
+      <h2 className="form-heading">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name" className="form-label">Name:</label>
           <input
             type="text"
             id="name"
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="input-field"
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email" className="form-label">Email:</label>
           <input
             type="email"
             id="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="input-field"
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password" className="form-label">Password:</label>
           <input
             type="password"
             id="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="input-field"
             required
           />
         </div>
         <div className="button-group">
           <button type="submit" className="btn">Sign Up</button>
-          <button type="button" className="btn" onClick={handleBackToHome}>Back to Home</button>
         </div>
       </form>
     </div>
