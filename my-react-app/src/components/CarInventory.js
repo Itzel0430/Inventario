@@ -1,5 +1,4 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Button, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 const CarInventory = () => {
@@ -25,7 +24,7 @@ const CarInventory = () => {
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
-      <Typography variant="h5" gutterBottom>
+      <Typography color ="blue" variant="h5" gutterBottom>
         CATALAGO DE AUTOS 
       </Typography>
       <TextField
@@ -56,13 +55,7 @@ const CarInventory = () => {
           ))}
         </TableBody>
       </Table>
-      <Button
-        startIcon={<ArrowBackIcon />}
-        onClick={() => console.log('Regresar')}
-        style={{ marginTop: '20px' }}
-      >
-        Regresar
-      </Button>
+      
     </div>
   );
 };

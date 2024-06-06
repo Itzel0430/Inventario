@@ -1,5 +1,4 @@
-import { ArrowBack } from '@mui/icons-material'; // Importamos el ícono de flecha hacia atrás
-import { Button, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import React from 'react';
 
 const Sales = () => {
@@ -20,8 +19,9 @@ const Sales = () => {
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
-      <Typography variant="h5" gutterBottom>
-        Ventas
+      <br></br>
+      <Typography color="blue" variant="h5" gutterBottom>
+        VENTAS
       </Typography>
       <Table>
         <TableHead>
@@ -51,14 +51,7 @@ const Sales = () => {
           ))}
         </TableBody>
       </Table>
-      <Button
-        variant="contained"
-        startIcon={<ArrowBack />}
-        onClick={handleBack}
-        style={{ marginTop: '20px' }}
-      >
-        REGRESAR
-      </Button>
+      
     </div>
   );
 };

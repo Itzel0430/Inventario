@@ -1,4 +1,4 @@
-import { Button, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 const Employees = () => {
@@ -58,9 +58,7 @@ const Employees = () => {
           </Table>
         </div>
       ))}
-      <Button variant="contained" color="primary" onClick={() => console.log('Regresar')}>
-        Regresar
-      </Button>
+     
     </div>
   );
 };

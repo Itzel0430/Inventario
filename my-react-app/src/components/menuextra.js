@@ -3,8 +3,7 @@ import { Collapse, List, ListItem, ListItemText } from '@mui/material';
 import React, { useState } from 'react';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import CarInventory from './CarInventory';
-import Employees from './Employees';
-import Sales from './Sales';
+
 
 const VerticalMenu = () => {
   const [open, setOpen] = useState(false);
@@ -17,12 +16,8 @@ const VerticalMenu = () => {
     <Router>
       <div style={{ width: '200px', textAlign: 'left', position: 'absolute', left: '0', top: '50%', transform: 'translateY(-50%)' }}>
         <List component="nav">
-          <ListItem button component={Link} to="/sales">
-            <ListItemText primary="VENTAS" />
-          </ListItem>
-          <ListItem button component={Link} to="/employees">
-            <ListItemText primary="EMPLEADOS" />
-          </ListItem>
+          
+          
           <ListItem button component={Link} to="/inventory">
             <ListItemText primary="CATALOGO" />
           </ListItem>
@@ -53,8 +48,7 @@ const VerticalMenu = () => {
       </div>
 
       <Routes>
-        <Route path="/sales" element={<Sales />} />
-        <Route path="/employees" element={<Employees />} />
+        
         <Route path="/inventory" element={<CarInventory />} />
       </Routes>
     </Router>
