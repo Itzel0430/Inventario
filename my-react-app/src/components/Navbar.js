@@ -4,7 +4,7 @@ import './Navbar.css';
 const Navbar = ({ onLogout }) => {
   return (
     <div className="navbar">
-      <button onClick={onLogout} className="navbar-button">Cerrar Sesión</button>
+      <button onClick={onLogout} className="navbar-button">CERRAR SESION</button>
     </div>
   );
 };

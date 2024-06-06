@@ -19,7 +19,7 @@ const LoginForm = ({ onLogin }) => {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">EMAIL:</label>
           <input
             type="email"
             id="email"
@@ -30,7 +30,7 @@ const LoginForm = ({ onLogin }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">PASSWORD:</label>
           <input
             type="password"
             id="password"
@@ -41,7 +41,7 @@ const LoginForm = ({ onLogin }) => {
           />
         </div>
         <div className="button-group">
-          <button type="submit" className="btn">Sign In</button>
+          <button type="submit" className="btn">SIGN IN</button>
         </div>
       </form>
     </div>

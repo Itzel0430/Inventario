@@ -26,14 +26,14 @@ const Sales = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>ID del Carro</TableCell>
-            <TableCell>Fecha de Venta</TableCell>
-            <TableCell>Modelo del Auto</TableCell>
-            <TableCell>Cliente</TableCell>
-            <TableCell>Empleado</TableCell>
-            <TableCell>Sucursal</TableCell>
-            <TableCell>Precio</TableCell>
-            <TableCell>Estado</TableCell>
+            <TableCell>ID</TableCell>
+            <TableCell>FECHA DE VENTA</TableCell>
+            <TableCell>MODELO</TableCell>
+            <TableCell>CLIENTE</TableCell>
+            <TableCell>EMPLEADO</TableCell>
+            <TableCell>SUCURSAL</TableCell>
+            <TableCell>PRECIO</TableCell>
+            <TableCell>ESTADO</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -57,7 +57,7 @@ const Sales = () => {
         onClick={handleBack}
         style={{ marginTop: '20px' }}
       >
-        Regresar
+        REGRESAR
       </Button>
     </div>
   );
