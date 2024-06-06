@@ -42,7 +42,7 @@ const Employees = () => {
             <TableHead>
               <TableRow>
                 <TableCell>ID</TableCell>
-                <TableCell>Nombre</TableCell>
+                <TableCell>NOMBRE </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

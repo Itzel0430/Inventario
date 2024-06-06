@@ -8,7 +8,7 @@ const Navbar = ({ onLogout }) => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      const isScrolledToTop = currentScrollPos > 70;
+      const isScrolledToTop = currentScrollPos < 100;
       setVisible((prevScrollPos > currentScrollPos || isScrolledToTop) && !isScrolledToTop);
       setPrevScrollPos(currentScrollPos);
     };

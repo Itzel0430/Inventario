@@ -7,11 +7,11 @@ const CarInventory = () => {
   
   // Datos de autos disponibles y vendidos
   const cars = [
-    { id: 1, model: 'Toyota Corolla', status: 'Disponible' },
-    { id: 2, model: 'Honda Civic', status: 'Vendido' },
-    { id: 3, model: 'Ford Mustang', status: 'Disponible' },
-    { id: 4, model: 'Chevrolet Cruze', status: 'Vendido' },
-    { id: 5, model: 'Nissan Altima', status: 'Disponible' },
+    { id: 1, model: 'Toyota Corolla', status: 'Disponible', price:'$129000'},
+    { id: 2, model: 'Honda Civic', status: 'Vendido',price: '$129000' },
+    { id: 3, model: 'Ford Mustang', status: 'Disponible', price:'$129000' },
+    { id: 4, model: 'Chevrolet Cruze', status: 'Vendido', price:'$129000' },
+    { id: 5, model: 'Nissan Altima', status: 'Disponible', price:'$129000' },
     // Agrega más datos según sea necesario
   ];
 
@@ -26,7 +26,7 @@ const CarInventory = () => {
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
       <Typography variant="h5" gutterBottom>
-        Inventario de Autos
+        CATALAGO DE AUTOS 
       </Typography>
       <TextField
         label="Buscar por Modelo"
@@ -40,8 +40,9 @@ const CarInventory = () => {
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>
-            <TableCell>Modelo</TableCell>
-            <TableCell>Estado</TableCell>
+            <TableCell>MODELO</TableCell>
+            <TableCell>PRECIO</TableCell>
+            <TableCell>ESTADO</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,6 +50,7 @@ const CarInventory = () => {
             <TableRow key={car.id}>
               <TableCell>{car.id}</TableCell>
               <TableCell>{car.model}</TableCell>
+              <TableCell>{car.price}</TableCell>
               <TableCell>{car.status}</TableCell>
             </TableRow>
           ))}

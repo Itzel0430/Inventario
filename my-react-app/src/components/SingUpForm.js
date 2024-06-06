@@ -18,10 +18,10 @@ const SignUpForm = ({ onSignUp }) => {
 
   return (
     <div className="signup-form">
-      <h2 className="form-heading">Sign Up</h2>
+      <h2 className="form-heading">SIGN UP</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name" className="form-label">Name:</label>
+          <label htmlFor="name" className="form-label">NAME:</label>
           <input
             type="text"
             id="name"
@@ -33,7 +33,7 @@ const SignUpForm = ({ onSignUp }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email" className="form-label">Email:</label>
+          <label htmlFor="email" className="form-label">EMAIL:</label>
           <input
             type="email"
             id="email"
@@ -57,7 +57,7 @@ const SignUpForm = ({ onSignUp }) => {
           />
         </div>
         <div className="button-group">
-          <button type="submit" className="btn">Sign Up</button>
+          <button type="submit" className="btn">SIGN UP</button>
         </div>
       </form>
     </div>
