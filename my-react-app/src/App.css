@@ -136,3 +136,11 @@ form {
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.VerticalMenu {
+  margin-left: 20px; /* Ajusta el margen izquierdo según sea necesario */
+  margin-right: 20px; /* Ajusta el margen derecho según sea necesario */
+  padding-top: 20px; /* Ajusta el relleno superior según sea necesario */
+  padding-bottom: 20px; /* Ajusta el relleno inferior según sea necesario */
+}
+

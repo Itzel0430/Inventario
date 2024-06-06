@@ -10,7 +10,6 @@ const SignUpForm = ({ onSignUp }) => {
     e.preventDefault();
     // Lógica para registrar al usuario
     onSignUp({ name, email, password });
-    // Limpiar campos del formulario
     setName('');
     setEmail('');
     setPassword('');

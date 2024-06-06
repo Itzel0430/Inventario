@@ -52,21 +52,21 @@ const App = () => {
 
   return (
     <div className="App">
+      {isLoggedIn && <Navbar onLogout={handleLogout} />}
       <div className="main-content">
         {showMenu && <Menu handleSignInClick={handleSignInClick} handleSignUpClick={handleSignUpClick} />}
         {showLoginForm && <LoginForm onLogin={handleLogin} />}
         {showSignUpForm && <SignUpForm onSignUp={handleSignUp} />}
         {isLoggedIn && (
           <>
-            <Navbar onLogout={handleLogout} />
             <VerticalMenu />
-            <Footer />
           </>
         )}
         {(showLoginForm || showSignUpForm) && (
           <button onClick={handleBackToHome} className="btn">Volver</button>
         )}
       </div>
+      {isLoggedIn && <Footer />}
     </div>
   );
 };
