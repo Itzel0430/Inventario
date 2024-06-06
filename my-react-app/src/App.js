@@ -26,18 +26,14 @@ const App = () => {
   };
 
   const handleLogin = (credentials) => {
-    // Lógica de autenticación aquí
     setIsLoggedIn(true);
     setShowLoginForm(false);
     setShowSignUpForm(false);
-    setShowMenu(false); // Oculta el menú al iniciar sesión
+    setShowMenu(false); 
   };
 
   const handleSignUp = (userData) => {
-    // Lógica de registro aquí
-    setIsLoggedIn(true); // Cambiar a true si el registro es exitoso
-    setShowSignUpForm(false);
-    setShowMenu(false); // Oculta el menú al registrarse
+    
   };
 
   const handleLogout = () => {
@@ -49,6 +45,7 @@ const App = () => {
     setIsLoggedIn(false);
     setShowMenu(true);
   };
+  
 
   return (
     <div className="App">
@@ -63,10 +60,9 @@ const App = () => {
           </>
         )}
         {(showLoginForm || showSignUpForm) && (
-          <button onClick={handleBackToHome} className="btn">Volver</button>
+          <button onClick={handleBackToHome} className="btn-lol">Volver</button>
         )}
       </div>
-      {isLoggedIn && <Footer />}
     </div>
   );
 };

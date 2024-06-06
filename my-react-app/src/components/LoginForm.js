@@ -7,8 +7,6 @@ const LoginForm = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí podrías agregar la lógica para autenticar al usuario, por ejemplo, con una API
-    // En este ejemplo, simplemente pasamos los datos de inicio de sesión al prop onLogin
     onLogin({ email, password });
     setEmail('');
     setPassword('');

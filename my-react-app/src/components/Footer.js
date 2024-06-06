@@ -3,23 +3,36 @@ import './Footer.css';
 
 const Footer = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    const isScrolledToBottom = window.innerHeight + currentScrollPos >= document.body.offsetHeight - 10;
+    const isContentSmall = document.body.offsetHeight <= window.innerHeight;
+    setVisible(isScrolledToBottom || isContentSmall);
+    setPrevScrollPos(currentScrollPos);
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      const isScrolledToTop = currentScrollPos <= 10 || currentScrollPos >= 0;
-      const isContentSmall = document.body.offsetHeight <= window.innerHeight;
-      setVisible((prevScrollPos > currentScrollPos || isScrolledToTop) && !isScrolledToTop || isContentSmall);
-      setPrevScrollPos(currentScrollPos);
-    };
-
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevScrollPos, visible]);
+  }, []);
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      handleScroll();
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+    };
+  }, []);
 
   return (
     <footer className={`footer ${visible ? '' : 'hidden'}`}>

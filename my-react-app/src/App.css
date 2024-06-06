@@ -1,4 +1,3 @@
-/* Estilos generales para la aplicación */
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -15,7 +14,6 @@ body {
   min-height: 100vh;
 }
 
-/* Estilos para el menú de navegación */
 .menu-container {
   text-align: center;
 }
@@ -59,7 +57,6 @@ body {
   background-color: #0056b3;
 }
 
-/* Estilos para el contenedor del formulario */
 .form-container {
   width: 100%;
   max-width: 400px;
@@ -73,7 +70,6 @@ body {
   align-items: center;
 }
 
-/* Estilos para el formulario */
 form {
   width: 100%;
   display: flex;
@@ -81,7 +77,6 @@ form {
   align-items: center;
 }
 
-/* Estilos para los grupos de formularios */
 .form-group {
   width: 100%;
   margin-bottom: 15px;
@@ -102,7 +97,6 @@ form {
   font-size: 16px;
 }
 
-/* Estilos para el botón de envío */
 .form-group .btn {
   width: 100%;
   padding: 15px 30px;
@@ -122,9 +116,12 @@ form {
 .form-group .btn:hover {
   background-color: #0056b3;
 }
+
 .App {
   text-align: center;
+  justify-content: center;
 }
+
 
 .App-header {
   background-color: #282c34;
@@ -138,9 +135,27 @@ form {
 }
 
 .VerticalMenu {
-  margin-left: 20px; /* Ajusta el margen izquierdo según sea necesario */
-  margin-right: 20px; /* Ajusta el margen derecho según sea necesario */
-  padding-top: 20px; /* Ajusta el relleno superior según sea necesario */
-  padding-bottom: 20px; /* Ajusta el relleno inferior según sea necesario */
+  margin-left: 20px; 
+  margin-right: 20px;
+  padding-top: 20px; 
+  padding-bottom: 20px; 
 }
+
+.btn-lol{
+  display: inline-block;
+  padding : 10px; 
+  background-color: #0a0a0a; 
+  color: white; 
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px; 
+  font-size: 15px; 
+  font-weight: bold; 
+  transition: background-color 0.3s, opacity 0.3s; 
+}
+
+.btn-lol:hover {
+  background-color: rgba(255, 0, 0, 0.8); 
+}
+
 

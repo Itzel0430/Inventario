@@ -7,8 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000; /* Asegurarse de que el navbar esté encima de otros elementos */
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Agregamos una transición para un efecto suave */
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease; 
 }
 
 .hidden {

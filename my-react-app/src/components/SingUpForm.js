@@ -5,19 +5,22 @@ const SignUpForm = ({ onSignUp }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState(''); 
+  const [isSuccess, setIsSuccess] = useState(false); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para registrar al usuario
-    onSignUp({ name, email, password });
+    onSignUp({ name, email, password, role });
     setName('');
     setEmail('');
     setPassword('');
-    alert("Registro Exitoso"); // Mensaje de confirmación de registro exitoso
+    setRole('');
+    setIsSuccess(true); 
   };
 
   return (
-    <div className="signup-form">
+    
+    <div className="signup-form" >
       <h2 className="form-heading">SIGN UP</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -45,7 +48,7 @@ const SignUpForm = ({ onSignUp }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password" className="form-label">Password:</label>
+          <label htmlFor="password" className="form-label">PASSWORD:</label>
           <input
             type="password"
             id="password"
@@ -56,10 +59,30 @@ const SignUpForm = ({ onSignUp }) => {
             required
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="role" className="form-label">CARGO</label>
+          <select
+            id="role"
+            name="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="input-field"
+            required
+          >
+            <option value="">CARGO</option>
+            <option value="administrador">ADMINISTRADOR</option>
+            <option value="vendedor">VENDEDOR</option>
+          </select>
+        </div>
         <div className="button-group">
           <button type="submit" className="btn">SIGN UP</button>
         </div>
       </form>
+      {isSuccess && (
+        <div className="success-message">
+          Registro Exitoso
+        </div>
+      )}
     </div>
   );
 };

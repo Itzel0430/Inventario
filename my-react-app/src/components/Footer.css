@@ -1,10 +1,11 @@
 .footer {
-  color: #000000;
+  padding: 20px;
+  color: rgb(56, 54, 54);
   padding: 1rem 0;
   position: fixed;
   bottom: 0;
   width: 100%;
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Agregamos una transición para un efecto suave */
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .hidden {
@@ -28,7 +29,7 @@
 }
 
 .footer-links li a {
-  color: #000000;
+  color: rgb(56, 54, 54);
   text-decoration: none;
 }
 
