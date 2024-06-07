@@ -5,7 +5,7 @@ import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import CarInventory from './CarInventory';
 import Employees from './Employees';
 import Sales from './Sales';
-import Clientes from './Clientes'; 
+import Clientes from './clientes';
 
 const VerticalMenu = () => {
   const [open, setOpen] = useState(false);
