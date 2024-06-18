@@ -33,16 +33,18 @@ const App = () => {
   };
 
   const handleSignUp = (userData) => {
-    
+    console.log(userData);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('userData');
     setIsLoggedIn(false);
     setShowMenu(true);
   };
 
   const handleBackToHome = () => {
     setIsLoggedIn(false);
+    setShowSignUpForm(false);
     setShowMenu(true);
   };
   

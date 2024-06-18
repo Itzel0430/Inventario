@@ -1,15 +1,41 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import url from './url';
 
 const Sales = () => {
-  // Datos de ventas ampliados
-  const salesData = [
-    { id: 1, carId: 101, date: '2024-05-15', model: 'Toyota Corolla', customer: 'Alice Johnson', employee: 'John Doe', branch: 'Sucursal A', price: 25000, status: 'Completada' },
-    { id: 2, carId: 102, date: '2024-05-16', model: 'Honda Civic', customer: 'Bob Brown', employee: 'Jane Smith', branch: 'Sucursal B', price: 28000, status: 'Completada' },
-    { id: 3, carId: 103, date: '2024-05-17', model: 'Ford Mustang', customer: 'Charlie Black', employee: 'Alice Johnson', branch: 'Sucursal C', price: 35000, status: 'En Proceso' },
-    { id: 4, carId: 104, date: '2024-05-18', model: 'Chevrolet Cruze', customer: 'David White', employee: 'Bob Brown', branch: 'Sucursal A', price: 22000, status: 'Completada' },
-    { id: 5, carId: 105, date: '2024-05-19', model: 'Nissan Altima', customer: 'Emma Green', employee: 'Charlie Black', branch: 'Sucursal B', price: 30000, status: 'En Proceso' },
-  ];
+  const [sale, setSale] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchSalesData = async () => {
+      try {
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        const sucursal = userData ? userData.nombre_sucursal : '';
+
+        if (!sucursal) {
+          throw new Error('Sucursal no especificada en el localStorage');
+        }
+
+        const response = await fetch(`${url.apiBaseUrl}/ventas?sucursal=${sucursal}`);
+
+        if (!response.ok) {
+          throw new Error('Error al obtener los datos de ventas');
+        }
+
+        const data = await response.json();
+        console.log(data);
+        setSale(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchSalesData();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
@@ -22,33 +48,33 @@ const Sales = () => {
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell>FECHA DE VENTA</TableCell>
+            <TableCell>MARCA</TableCell>
             <TableCell>MODELO</TableCell>
+            <TableCell>YEAR</TableCell>
             <TableCell>CLIENTE</TableCell>
             <TableCell>EMPLEADO</TableCell>
             <TableCell>SUCURSAL</TableCell>
             <TableCell>PRECIO</TableCell>
-            <TableCell>ESTADO</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {salesData.map((sale) => (
-            <TableRow key={sale.id}>
-              <TableCell>{sale.carId}</TableCell>
-              <TableCell>{sale.date}</TableCell>
-              <TableCell>{sale.model}</TableCell>
-              <TableCell>{sale.customer}</TableCell>
-              <TableCell>{sale.employee}</TableCell>
-              <TableCell>{sale.branch}</TableCell>
-              <TableCell>{`$ ${sale.price}`}</TableCell>
-              <TableCell>{sale.status}</TableCell>
+          {sale.map((sale, index) => (
+            <TableRow key={index}>
+              <TableCell>{index + 1}</TableCell>
+              <TableCell>{sale.fecha}</TableCell>
+              <TableCell>{sale.marca}</TableCell>
+              <TableCell>{sale.modelo}</TableCell>
+              <TableCell>{sale.year}</TableCell>
+              <TableCell>{`${sale.nombre_cliente} ${sale.apellido_cliente}`}</TableCell>
+              <TableCell>{`${sale.nombre_empleado} ${sale.apellido_empleado}`}</TableCell>
+              <TableCell>{sale.sucursal}</TableCell>
+              <TableCell>{`$ ${sale.precio_venta}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      
     </div>
   );
 };
 
 export default Sales;
-

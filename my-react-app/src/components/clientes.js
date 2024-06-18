@@ -1,26 +1,41 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import url from './url';
 
-const clientes = () => {
+const Clientes = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [clients, setClients] = useState([]);
+  const [error, setError] = useState(null);
 
-  // Datos de clientes
-  const clients = [
-    { id: 1, name: 'John Doe', category: 'VIP', email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', category: 'Regular', email: 'jane@example.com' },
-    { id: 3, name: 'Alice Johnson', category: 'Regular', email: 'alice@example.com' },
-    { id: 4, name: 'Bob Brown', category: 'VIP', email: 'bob@example.com' },
-    { id: 5, name: 'Charlie Black', category: 'New', email: 'charlie@example.com' },
-    
-  ];
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const response = await fetch(`${url.apiBaseUrl}/clientes`);
+        if (!response.ok) {
+          throw new Error('Error al obtener los datos de clientes');
+        }
+
+        const data = await response.json();
+        setClients(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchClients();
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const filteredClients = clients.filter(client =>
-    client.name.toLowerCase().includes(searchTerm.toLowerCase())
+    client.nombre.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
@@ -40,24 +55,34 @@ const clientes = () => {
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell>NOMBRE</TableCell>
-            <TableCell>CATEGORÍA</TableCell>
+            <TableCell>APELLIDO</TableCell>
             <TableCell>EMAIL</TableCell>
+            <TableCell>SEXO</TableCell>
+            <TableCell>EDAD</TableCell>
+            <TableCell>TELEFONO</TableCell>
+            <TableCell>DIRECCION</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {filteredClients.map((client) => (
-            <TableRow key={client.id}>
-              <TableCell>{client.id}</TableCell>
-              <TableCell>{client.name}</TableCell>
-              <TableCell>{client.category}</TableCell>
+          {filteredClients.map((client, index) => (
+            <TableRow key={index}>
+              <TableCell>{index + 1}</TableCell> {/* Using index as ID since the table doesn't have an ID */}
+              <TableCell>{client.nombre}</TableCell>
+              <TableCell>{client.apellido}</TableCell>
               <TableCell>{client.email}</TableCell>
+              <TableCell>{client.sexo}</TableCell>
+              <TableCell>{client.edad}</TableCell>
+              <TableCell>{client.telefono}</TableCell>
+              <TableCell>{client.direccion}</TableCell>
+
+
+
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      
     </div>
   );
 };
 
-export default clientes;
+export default Clientes;

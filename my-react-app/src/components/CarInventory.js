@@ -1,30 +1,45 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import url from './url';
 
 const CarInventory = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  
-  // Datos de autos disponibles y vendidos
-  const cars = [
-    { id: 1, model: 'Toyota Corolla', status: 'Disponible', price:'$129000'},
-    { id: 2, model: 'Honda Civic', status: 'Vendido',price: '$129000' },
-    { id: 3, model: 'Ford Mustang', status: 'Disponible', price:'$129000' },
-    { id: 4, model: 'Chevrolet Cruze', status: 'Vendido', price:'$129000' },
-    { id: 5, model: 'Nissan Altima', status: 'Disponible', price:'$129000' },
-    // Agrega más datos según sea necesario
-  ];
+  const [cars, setCars] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const response = await fetch(`${url.apiBaseUrl}/autos`);
+        if (!response.ok) {
+          throw new Error('Error al obtener los datos de autos');
+        }
+
+        const data = await response.json();
+        setCars(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchCars();
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const filteredCars = cars.filter(car =>
-    car.model.toLowerCase().includes(searchTerm.toLowerCase())
+    car.modelo.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
-      <Typography color ="blue" variant="h5" gutterBottom>
+      <Typography color="blue" variant="h5" gutterBottom>
         CATALAGO DE AUTOS 
       </Typography>
       <TextField
@@ -39,27 +54,33 @@ const CarInventory = () => {
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>
+            <TableCell>MARCA</TableCell>
             <TableCell>MODELO</TableCell>
+            <TableCell>TRASMISION</TableCell>
+            <TableCell>COLOR</TableCell>
+            <TableCell>AÑO</TableCell>
             <TableCell>PRECIO</TableCell>
-            <TableCell>ESTADO</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
-          {filteredCars.map((car) => (
-            <TableRow key={car.id}>
-              <TableCell>{car.id}</TableCell>
-              <TableCell>{car.model}</TableCell>
-              <TableCell>{car.price}</TableCell>
-              <TableCell>{car.status}</TableCell>
+          {filteredCars.map((car, index) => (
+            <TableRow key={index}>
+              <TableCell>{index + 1}</TableCell> {/* Using index as ID since the table doesn't have an ID */}
+              <TableCell>{car.marca}</TableCell>
+              <TableCell>{car.modelo}</TableCell>
+              <TableCell>{car.transmision}</TableCell>
+              <TableCell>{car.color}</TableCell>
+              <TableCell>{car.year}</TableCell>
+              <TableCell>{car.precio}</TableCell>
+
+
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      
     </div>
   );
 };
 
 export default CarInventory;
-
-

@@ -1,29 +1,52 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import url from './url';
 const Employees = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const employees = [
-    { id: 1, name: 'John Doe', category: 'Manager' },
-    { id: 2, name: 'Jane Smith', category: 'Ventas' },
-    { id: 3, name: 'Alice Johnson', category: 'Ventas' },
-    { id: 4, name: 'Bob Brown', category: 'Marketing' },
-    { id: 5, name: 'Charlie Black', category: 'Marketing' },
-    { id: 3, name: 'Anee Klein', category: 'Ventas' },
-    { id: 4, name: 'Charles Fox', category: 'Marketing' },
-    { id: 5, name: 'Clare Dengler', category: 'Marketing' },
+  const [employees, setEmployees] = useState([]);
+  const [error, setError] = useState(null);
 
-  ];
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        const sucursal = userData ? userData.nombre_sucursal : '';
 
-  const categories = [...new Set(employees.map(emp => emp.category))];
+        if (!sucursal) {
+          throw new Error('Sucursal no especificada en el localStorage');
+        }
+
+        const response = await fetch(`${url.apiBaseUrl}/empleados?sucursal=${sucursal}`);
+        if (!response.ok) {
+          throw new Error('Error al obtener los datos de empleados');
+        }
+
+        const data = await response.json();
+        setEmployees(data);
+        console.log(data);
+
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchEmployees();
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const filteredEmployees = employees.filter(emp =>
-    emp.name.toLowerCase().includes(searchTerm.toLowerCase())
+    (emp.nombre && emp.nombre.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (emp.apellido && emp.apellido.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
+  const categories = [...new Set(employees.map(emp => emp.puesto))];
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: 'auto' }}>
@@ -42,23 +65,22 @@ const Employees = () => {
             <TableHead>
               <TableRow>
                 <TableCell>ID</TableCell>
-                <TableCell>NOMBRE </TableCell>
+                <TableCell>NOMBRE</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {filteredEmployees
-                .filter(emp => emp.category === category)
+                .filter(emp => emp.puesto === category)
                 .map(emp => (
-                  <TableRow key={emp.id}>
-                    <TableCell>{emp.id}</TableCell>
-                    <TableCell>{emp.name}</TableCell>
+                  <TableRow key={emp.usuario}>
+                    <TableCell>{emp.usuario}</TableCell>
+                    <TableCell>{`${emp.nombre} ${emp.apellido}`}</TableCell>
                   </TableRow>
                 ))}
             </TableBody>
           </Table>
         </div>
       ))}
-     
     </div>
   );
 };
